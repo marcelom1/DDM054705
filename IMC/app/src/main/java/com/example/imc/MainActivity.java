@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     EditText edPeso, edAltura;
     TextView tvIMC;
     ImageView img;
+    SeekBar seekBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
         edAltura = findViewById(R.id.editTextAltura);
         tvIMC = findViewById(R.id.textViewIMC);
         img = findViewById(R.id.imageViewIMC);
+        seekBar = findViewById(R.id.seekBarrra);
         img.setImageResource(R.drawable.perfil);
+
     }
 
     public double calculaIMC(double peso, double altura){
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         double imc = calculaIMC(peso,altura);
         trocarImagem(imc);
         String resultado = String.format("%.2f", imc);
+        //seekBar.setProgress((int) imc);
         tvIMC.setText(resultado);
     }
 
@@ -54,5 +59,6 @@ public class MainActivity extends AppCompatActivity {
         }else if(imc >= 40){
             img.setImageResource(R.drawable.obesidade3);
         }
+
     }
 }
