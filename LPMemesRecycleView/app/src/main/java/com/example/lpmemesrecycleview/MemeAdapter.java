@@ -26,7 +26,7 @@ class MemeAdapter  extends RecyclerView.Adapter<MemeAdapter.MyViewHolder> {
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //Criando View Holder(Inflar Layout)
+
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
         View convertView = layoutInflater.inflate(mResource,parent,false);
 
