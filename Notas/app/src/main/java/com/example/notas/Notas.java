@@ -10,6 +10,7 @@ public class Notas {
     Context context;
     private static final String PREFERENCIAS_FILE = "nota";
 
+
     public Notas(Context c) {
         this.context = c;
         preferencias = this.context.getSharedPreferences(PREFERENCIAS_FILE, Context.MODE_PRIVATE);

@@ -8,14 +8,18 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     Notas nota;
     EditText editText;
+    ControllerNotas controller;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
         this.editText = findViewById(R.id.editText);
 
-        nota = new Notas(getApplicationContext());
-
+        //nota = new Notas(getApplicationContext());
+        controller = new ControllerNotas(getApplicationContext());
         /*FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });*/
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
                 nota.salvaNota(editText.getText().toString());
             }
-        });
+        });*/
+        controller.salvarNota(editText.getText().toString());
 
 
     }
@@ -50,7 +55,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        editText.setText(nota.recuperaNota());
+        ArrayList<Nota> listaNotas = controller.recuperarTodasNotas();
+        String text = controller.recuperarTodasNotas().get(10).getText();
+        editText.setText(text);
+
     }
     @Override
     protected void onPause() {
