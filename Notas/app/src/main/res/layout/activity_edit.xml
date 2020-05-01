@@ -4,22 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     tools:visibility="visible">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editTextNota"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/s_bloco_notas_android_cook_book" />
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <include layout="@layout/content_main" />
+        android:layout_height="wrap_content"
+        android:hint="hint" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

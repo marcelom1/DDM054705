@@ -28,6 +28,12 @@ public class NotasDao {
         meudb.insert("notas", null, notasValores);
     }
 
+    public void atualizaNotas(Nota notas){
+        ContentValues notasValores = new ContentValues();
+        notasValores.put("text", notas.getText());
+        meudb.update("notas", notasValores,"_id="+ notas.getId(),null);
+    }
+
     public ArrayList<Nota> getAll(){
         Cursor dataset = meudb.rawQuery("SELECT * FROM notas ", null);
 
@@ -45,10 +51,14 @@ public class NotasDao {
     }
 
     public Nota getNota(int id){
-        Cursor dataset = meudb.rawQuery("SELECT * FROM notas WHERE id = ?", new String[id]);
+
+        String[] whereArgs = { String.valueOf(id) };
+        Cursor dataset = meudb.rawQuery("SELECT * FROM notas WHERE _id = ?", whereArgs);
         dataset.moveToFirst();
 
-        Nota retorno = new Nota(dataset.getInt(dataset.getColumnIndex("id")),dataset.getString(dataset.getColumnIndex("text")));
+        String text = dataset.getString(dataset.getColumnIndex("text"));
+
+        Nota retorno = new Nota(id, text);
 
         return  retorno;
     }

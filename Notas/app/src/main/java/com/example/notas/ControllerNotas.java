@@ -20,6 +20,7 @@ public class ControllerNotas {
     }
 
     public Nota recuperaNota(int id){
+
         return dao.getNota(id);
 
     }
@@ -29,5 +30,11 @@ public class ControllerNotas {
         lista = dao.getAll();
 
         return lista;
+    }
+
+    public void atualizarNota(int id, String text){
+        Nota nota = new Nota(id,text);
+        dao.atualizaNotas(nota);
+
     }
 }
