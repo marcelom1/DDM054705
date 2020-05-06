@@ -2,6 +2,7 @@ package com.example.notas;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,15 +43,15 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
-            Nota nota = mNota.get(position);
-
+            final Nota nota = mNota.get(position);
+            Log.d("Tabela_Pessoas", nota.getId()+"TESTE");
             holder.editText.setText(nota.getText());
             holder.editText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(mContext,ActivityEditNotas.class);
                     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    i.putExtra("position",position);
+                    i.putExtra("position",nota.getId());
                     mContext.startActivity(i);
                 }
             });

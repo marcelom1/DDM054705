@@ -37,4 +37,8 @@ public class ControllerNotas {
         dao.atualizaNotas(nota);
 
     }
+
+    public void excluirNota(int id){
+        dao.dropNota(id);
+    }
 }

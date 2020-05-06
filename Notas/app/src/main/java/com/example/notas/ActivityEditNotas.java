@@ -3,6 +3,7 @@ package com.example.notas;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,11 +19,12 @@ public class ActivityEditNotas extends AppCompatActivity {
     EditText editText;
     ControllerNotas controller;
     int posicao;
+    Button btnExcluir;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
-        posicao = getIntent().getExtras().getInt("position")+1;
+        posicao = getIntent().getExtras().getInt("position");
 
         this.editText = findViewById(R.id.editTextNota);
 
@@ -38,6 +40,12 @@ public class ActivityEditNotas extends AppCompatActivity {
             }
         });
 
+        btnExcluir = findViewById(R.id.btnExcluir);
+        if (posicao == 0){
+            btnExcluir.setVisibility((View.INVISIBLE));
+        }else{
+            btnExcluir.setOnClickListener(excluirNota);
+        }
 
 
     }
@@ -67,6 +75,15 @@ public class ActivityEditNotas extends AppCompatActivity {
             controller.atualizarNota(posicao,editText.getText().toString());
         }
     }
+
+    private View.OnClickListener excluirNota = new View.OnClickListener() {
+        public void onClick(View v) {
+            if (posicao != 0) {
+                controller.excluirNota(posicao);
+                finish();
+            }
+        }
+    };
 
 
 

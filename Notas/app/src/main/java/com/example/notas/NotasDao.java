@@ -63,4 +63,8 @@ public class NotasDao {
         return  retorno;
     }
 
+    public  void dropNota(int id){
+        meudb.delete("notas","_id="+id,null);
+    }
+
 }
