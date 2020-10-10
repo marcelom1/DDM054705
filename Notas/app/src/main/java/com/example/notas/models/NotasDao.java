@@ -1,10 +1,11 @@
-package com.example.notas;
+package com.example.notas.models;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
+
+import com.example.notas.models.Nota;
 
 import java.util.ArrayList;
 

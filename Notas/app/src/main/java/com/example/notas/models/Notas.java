@@ -1,8 +1,10 @@
-package com.example.notas;
+package com.example.notas.models;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
+
+import com.example.notas.R;
 
 public class Notas {
     SharedPreferences preferencias;

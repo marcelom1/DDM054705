@@ -6,12 +6,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.notas.models.Nota;
 
 import java.util.ArrayList;
 
@@ -44,7 +44,6 @@ public class NotasAdapter extends RecyclerView.Adapter<NotasAdapter.MyViewHolder
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
             final Nota nota = mNota.get(position);
-            Log.d("Tabela_Pessoas", nota.getId()+"TESTE");
             holder.editText.setText(nota.getText());
             holder.editText.setOnClickListener(new View.OnClickListener() {
                 @Override

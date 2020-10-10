@@ -1,4 +1,4 @@
-package com.example.notas;
+package com.example.notas.models;
 
 public class Nota {
     int id;

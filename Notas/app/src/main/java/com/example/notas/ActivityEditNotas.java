@@ -7,13 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.notas.controller.ControllerNotas;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.util.ArrayList;
 
 public class ActivityEditNotas extends AppCompatActivity {
     EditText editText;
@@ -67,21 +64,16 @@ public class ActivityEditNotas extends AppCompatActivity {
     }
 
     private void salvarAtualizarNota(){
-        Log.d("Tabela_Pessoas", "OnCre Ac");
-        if (posicao == -1) {
-            Log.d("Tabela_Pessoas", posicao+"salvando");
+        if ((posicao == -1) && (!(editText.getText().toString().isEmpty()))) {
             controller.salvarNota(editText.getText().toString());
         }else if(!(editText.getText().toString().isEmpty())){
-            Log.d("Tabela_Pessoas", posicao+"aaaaaaa");
             controller.atualizarNota(posicao,editText.getText().toString());
         }
-        Log.d("Tabela_Pessoas", "depois");
     }
 
     private View.OnClickListener excluirNota = new View.OnClickListener() {
         public void onClick(View v) {
-            Log.d("Tabela_Pessoas", "Oonck");
-            if (posicao != 0) {
+            if (posicao > -1) {
                 controller.excluirNota(posicao);
                 finish();
             }

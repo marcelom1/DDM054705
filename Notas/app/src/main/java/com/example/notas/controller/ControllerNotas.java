@@ -1,7 +1,9 @@
-package com.example.notas;
+package com.example.notas.controller;
 
 import android.content.Context;
-import android.util.Log;
+
+import com.example.notas.models.Nota;
+import com.example.notas.models.NotasDao;
 
 import java.util.ArrayList;
 
