@@ -39,7 +39,7 @@ public class ActivityEditNotas extends AppCompatActivity {
                 salvarAtualizarNota();
             }
         });
-
+        Log.d("Tabela_Pessoas", "OnCre Ac");
         btnExcluir = findViewById(R.id.btnExcluir);
         if (posicao == 0){
             btnExcluir.setVisibility((View.INVISIBLE));
@@ -53,10 +53,8 @@ public class ActivityEditNotas extends AppCompatActivity {
    @Override
    protected void onStart() {
         super.onStart();
-
-       if (posicao != 0) {
+       if (posicao > -1) {
            String text = controller.recuperaNota(posicao).getText();
-           //Log.d("Tabela_Pessoas", text+"TESTE");
            editText.setText(text);
        }else{
            editText.setText("");
@@ -69,15 +67,20 @@ public class ActivityEditNotas extends AppCompatActivity {
     }
 
     private void salvarAtualizarNota(){
-        if (posicao == 0) {
+        Log.d("Tabela_Pessoas", "OnCre Ac");
+        if (posicao == -1) {
+            Log.d("Tabela_Pessoas", posicao+"salvando");
             controller.salvarNota(editText.getText().toString());
         }else if(!(editText.getText().toString().isEmpty())){
+            Log.d("Tabela_Pessoas", posicao+"aaaaaaa");
             controller.atualizarNota(posicao,editText.getText().toString());
         }
+        Log.d("Tabela_Pessoas", "depois");
     }
 
     private View.OnClickListener excluirNota = new View.OnClickListener() {
         public void onClick(View v) {
+            Log.d("Tabela_Pessoas", "Oonck");
             if (posicao != 0) {
                 controller.excluirNota(posicao);
                 finish();
